@@ -48,3 +48,9 @@ void Display::notifyPositionChoiceUpdate(const Board& board, const std::vector<s
         observer->updatePositionChoice(board, validMoves);
     }
 }
+
+void Display::notifyModeChoiceMenuUpdate(){
+    for (auto& observer : observers) {
+        observer->updateModeChoiceMenu();
+    }
+}

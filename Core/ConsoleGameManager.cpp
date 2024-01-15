@@ -7,19 +7,10 @@ ConsoleGameManager::ConsoleGameManager() {
 
 void ConsoleGameManager::startGameLoop() {
     bool playAgain = true;
+    ConsoleObserver consoleObserver;
+    display->addObserver(&consoleObserver);
 
     while (playAgain) {
-        ConsoleObserver consoleObserver;
-        GUIObserver guiObserver;
-
-        std::string displaychoice = "GUI";
-
-        if(displaychoice == "GUI"){
-            display->addObserver(&guiObserver);
-        }
-        else{
-            display->addObserver(&consoleObserver);
-        }
 
         display->notifyStart();
         display->notifyInstructionsUpdate("Choisissez un jeu:");
@@ -67,7 +58,7 @@ int ConsoleGameManager::getGameChoice() {
 
 int ConsoleGameManager::getModeChoice() {
     display->notifyInstructionsUpdate("Choisissez le mode de jeu:");
-    display->notifyGameChoiceMenuUpdate();
+    display->notifyModeChoiceMenuUpdate();
     int modeChoice = checkInputs->getIntegerInput();
 
     while (modeChoice < 1 || modeChoice > 3) {

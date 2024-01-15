@@ -98,3 +98,9 @@ void ConsoleObserver::updateGameChoiceMenu(){
     std::cout << "3.Othello" << std::endl;
     std::cout << "4.Draughts" << std::endl;
 }
+
+void ConsoleObserver::updateModeChoiceMenu(){
+    std::cout << "1.Joueur vs ordinateur" << std::endl;
+    std::cout << "2.Deux joueurs" << std::endl;
+    std::cout << "3.Ordinateur vs ordinateur" << std::endl;
+}

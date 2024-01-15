@@ -13,6 +13,7 @@ public:
     virtual void updateMessage(const std::string &status) = 0;
     virtual void updateWarning(const std::string &status) = 0;
     virtual void updateGameChoiceMenu() = 0;
+    virtual void updateModeChoiceMenu() = 0;
 
     virtual void updatePositionChoice(const Board& board, const std::vector<std::pair<int, int>>& validMoves) = 0;
 };
