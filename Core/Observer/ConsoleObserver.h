@@ -8,12 +8,12 @@
 class ConsoleObserver : public InterfaceObserver{
 public:
     ConsoleObserver();
-    void updateStart() override;
+    void updateStatus() override;
     void updateBoard(Board& board) override;
     void updateInstructions(const std::string &instruction) override;
     void updateMessage(const std::string &message) override;
     void updateWarning(const std::string &warning) override;
-    void updateMenu(const std::string &menu) override;
+    void updateGameChoiceMenu() override;
 
     void updatePositionChoice(const Board& board, const std::vector<std::pair<int, int>>& validMoves) override;
 

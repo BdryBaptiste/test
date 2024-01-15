@@ -20,6 +20,8 @@ add_executable(test
   Common/Cell.cpp
   Common/Symbols.cpp
   Core/GameManager.cpp
+  Core/ConsoleGameManager.cpp
+  Core/UIGameManager.cpp
   Core/Game.cpp
   Core/utils/CheckInputs.cpp
   Core/Display/DisplayConsole.cpp

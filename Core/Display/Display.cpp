@@ -3,6 +3,12 @@
 Display::Display(){
 }
 
+void Display::notifyStart(){
+    for (auto& observer : observers) {
+        observer->updateStatus();
+    }
+}
+
 void Display::addObserver(InterfaceObserver* observer) {
     observers.push_back(observer);
 }
@@ -31,9 +37,9 @@ void Display::notifyWarningUpdate(const std::string &warning) {
     }
 }
 
-void Display::notifyMenuUpdate(const std::string &menu) {
+void Display::notifyGameChoiceMenuUpdate() {
     for (auto& observer : observers) {
-        observer->updateMenu(menu);
+        observer->updateGameChoiceMenu();
     }
 }
 

@@ -3,7 +3,7 @@
 ConsoleObserver::ConsoleObserver(){
 }
 
-void ConsoleObserver::updateStart(){
+void ConsoleObserver::updateStatus(){
     std::cout<<"Initialisation de la séquence de jeux"<<std::endl;
 }
 
@@ -92,6 +92,9 @@ void ConsoleObserver::updateMessage(const std::string &message){
 void ConsoleObserver::updateWarning(const std::string &warning){
     std::cout << warning << std::endl;
 }
-void ConsoleObserver::updateMenu(const std::string &menu){
-    std::cout << menu << std::endl;
+void ConsoleObserver::updateGameChoiceMenu(){
+    std::cout << "1.Tic Tac Toe" << std::endl;
+    std::cout << "2.Connect Four" << std::endl;
+    std::cout << "3.Othello" << std::endl;
+    std::cout << "4.Draughts" << std::endl;
 }

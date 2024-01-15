@@ -1,11 +1,11 @@
 #include <QApplication>
-#include "Core/GameManager.h"
+#include "Core/ConsoleGameManager.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    GameManager gameManager;
+    ConsoleGameManager gameManager;
     gameManager.startGameLoop();
 
     return a.exec();

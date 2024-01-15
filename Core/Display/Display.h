@@ -15,8 +15,9 @@ class Display {
         void notifyWarningUpdate(const std::string &warning);
         void notifyInstructionsUpdate(const std::string &instuctions);
         void notifyMessageUpdate(const std::string &message);
-        void notifyMenuUpdate(const std::string &menu);
+        void notifyGameChoiceMenuUpdate();
         void notifyPositionChoiceUpdate(const Board& board, const std::vector<std::pair<int, int>>& validMoves);
+        void notifyStart();
         Display();
 };
 

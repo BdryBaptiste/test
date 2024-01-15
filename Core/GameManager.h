@@ -19,19 +19,19 @@
 
 class GameManager {
 public:
-    GameManager();
-    void startGameLoop();
+    virtual ~GameManager() = default;
+    virtual void startGameLoop() = 0;
 
-private:
+protected:
     CheckInputs* checkInputs;
     std::shared_ptr<Display> display;
     std::shared_ptr<Player> player1;
     std::shared_ptr<Player> player2;
     std::shared_ptr<Game> currentGame;
-    int getGameChoice();
-    char getReplayChoice();
-    int getModeChoice();
-    void configurePlayers(int modeChoice, std::shared_ptr<Player>& player1, std::shared_ptr<Player>& player2);
+    virtual int getGameChoice() = 0;
+    virtual char getReplayChoice() = 0;
+    virtual int getModeChoice() = 0;
+    virtual void configurePlayers(int modeChoice, std::shared_ptr<Player>& player1, std::shared_ptr<Player>& player2) = 0;
 };
 
 #endif // GAMEMANAGER_H
