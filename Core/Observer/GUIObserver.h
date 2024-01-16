@@ -3,7 +3,6 @@
 
 #include <string>
 #include "InterfaceObserver.h"
-#include "../Display/MainWindow.h"
 #include <QApplication>
 #include <QWidget>
 #include <QVBoxLayout>
