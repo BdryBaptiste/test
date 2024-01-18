@@ -11,8 +11,8 @@
 class GUIObserver : public InterfaceObserver, public QWidget{
 public:
     GUIObserver();
-    QWidget *mainWindow;
-    QVBoxLayout *layout;
+    // QWidget *mainWindow;
+    // QVBoxLayout *layout;
 
     void updateStatus() override;
     void updateBoard(Board& board) override;

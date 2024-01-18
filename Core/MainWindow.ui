@@ -6,43 +6,71 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>554</width>
-    <height>545</height>
+    <width>381</width>
+    <height>328</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <widget class="QPushButton" name="TicTacToeButton">
-     <property name="text">
-      <string>1.TicTacToe</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="ConnectFourButton">
-     <property name="text">
-      <string>2.Connect Four</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="OthelloButton">
-     <property name="text">
-      <string>3.Othello</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="DraughtsButton">
-     <property name="text">
-      <string>4.Draughts</string>
-     </property>
-    </widget>
-   </item>
-  </layout>
+  <widget class="QPushButton" name="OthelloButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>170</y>
+     <width>381</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>3.Othello</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DraughtsButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>240</y>
+     <width>381</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>4.Draughts</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="TicTacToeButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>30</y>
+     <width>381</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>1.TicTacToe</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ConnectFourButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>100</y>
+     <width>381</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>2.Connect Four</string>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

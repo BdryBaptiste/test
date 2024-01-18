@@ -3,6 +3,12 @@
 
 #include <QtWidgets>
 #include "ui_MainWindow.h"
+#include "Display/Display.h"
+#include "Game.h"
+#include "../Games/TicTacToe/TicTacToe.h"
+#include "../Games/ConnectFour/ConnectFour.h"
+#include "../Games/Othello/Othello.h"
+#include <iostream>
 
 class UIGameManager : public QMainWindow
 {
@@ -13,9 +19,25 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    std::shared_ptr<Display> display;
+    std::shared_ptr<Player> player1;
+    std::shared_ptr<Player> player2;
+    std::shared_ptr<Game> currentGame;
 
 private slots:
     void onTicTacToeButtonClicked();
+    void onOthelloButtonClicked();
+    void onConnectFourButtonClicked();
+    void onDraugthsButtonClicked();
+
+    void onPlayerVsComputerButtonClicked();
+    void onTwoPlayersButtonClicked();
+    void onComputerVsComputerButtonClicked();
+
+    void onStartButtonClicked();
+
+    void hideGameButtons();
+    void showGameModeButtons();
 
 };
 
