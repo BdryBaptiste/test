@@ -46,13 +46,20 @@ void GUIObserver::updateBoard(Board& board){
 void GUIObserver::updateInstructions(const std::string &status){
 
 }
+
 void GUIObserver::updateMessage(const std::string &status){
 
 }
+
 void GUIObserver::updateWarning(const std::string &status){
 
 }
+
 void GUIObserver::updatePositionChoice(const Board& board, const std::vector<std::pair<int, int>>& validMoves){
+
+}
+
+void GUIObserver::updateModeChoiceMenu(){
 
 }
 

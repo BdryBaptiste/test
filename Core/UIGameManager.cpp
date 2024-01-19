@@ -3,6 +3,9 @@
 
 UIGameManager::UIGameManager(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
+    // GUIObserver guiObserver;
+    // display->addObserver(&guiObserver);
+
     ui->setupUi(this);
 
     connect(ui->TicTacToeButton, SIGNAL(clicked()), this, SLOT(onTicTacToeButtonClicked()));
@@ -80,7 +83,7 @@ void UIGameManager::onComputerVsComputerButtonClicked()
 
 void UIGameManager::onStartButtonClicked()
 {
-    currentGame->playGame();
+    // currentGame->playGame();
 }
 
 void UIGameManager::hideGameButtons()

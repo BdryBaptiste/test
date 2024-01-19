@@ -20,6 +20,7 @@ public:
     void updateMessage(const std::string &status) override;
     void updateWarning(const std::string &status) override;
     void updateGameChoiceMenu() override;
+    void updateModeChoiceMenu() override;
     void updatePositionChoice(const Board& board, const std::vector<std::pair<int, int>>& validMoves) override;
 
 };

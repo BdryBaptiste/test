@@ -5,6 +5,7 @@
 #include "ui_MainWindow.h"
 #include "Display/Display.h"
 #include "Game.h"
+#include "Observer/GUIObserver.h"
 #include "../Games/TicTacToe/TicTacToe.h"
 #include "../Games/ConnectFour/ConnectFour.h"
 #include "../Games/Othello/Othello.h"
