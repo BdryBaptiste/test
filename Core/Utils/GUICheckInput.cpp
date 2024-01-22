@@ -1,6 +1,5 @@
 #include "GUICheckInput.h"
 
-GUICheckInputs* GUICheckInputs::instance = nullptr;
 
 GUICheckInputs::GUICheckInputs(Display& display) : CheckInputs(display) {}
 

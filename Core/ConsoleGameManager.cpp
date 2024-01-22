@@ -2,7 +2,12 @@
 
 ConsoleGameManager::ConsoleGameManager() {
     display.reset(new DisplayConsole());
-    checkInputs = ConsoleCheckInputs::getInstance(*display);
+
+    InputType inputType = InputType::GUI;
+    auto checkInput = CheckInputFactory::createCheckInput(inputType);
+
+    InputManager inputManager;
+    inputManager.setCheckInput(std::move(checkInput));
 }
 
 void ConsoleGameManager::startGameLoop() {

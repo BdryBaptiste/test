@@ -5,7 +5,6 @@
 
 class GUICheckInputs : public CheckInputs {
 private:
-    static GUICheckInputs* instance;
     GUICheckInputs(Display& display);
 
 public:

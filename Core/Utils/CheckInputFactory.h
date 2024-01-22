@@ -10,7 +10,7 @@ class CheckInputFactory
 public:
     Display& display;
     CheckInputFactory();
-    static CheckInput* createCheckInput(InputType type);
+    static std::unique_ptr<CheckInputs> createCheckInput(InputType type);
 };
 
 #endif // CHECKINPUTFACTORY_H

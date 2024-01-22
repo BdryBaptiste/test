@@ -9,7 +9,6 @@
 
 class ConsoleCheckInputs : public CheckInputs {
 private:
-    static ConsoleCheckInputs* instance;
     ConsoleCheckInputs(Display& display);
 
 public:

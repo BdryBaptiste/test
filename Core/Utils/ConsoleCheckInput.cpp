@@ -1,7 +1,5 @@
 #include "ConsoleCheckInput.h"
 
-ConsoleCheckInputs* ConsoleCheckInputs::instance = nullptr;
-
 ConsoleCheckInputs::ConsoleCheckInputs(Display& display) : CheckInputs(display) {}
 
 int ConsoleCheckInputs::getIntegerInput() {

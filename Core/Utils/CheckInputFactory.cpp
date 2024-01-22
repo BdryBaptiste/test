@@ -2,13 +2,12 @@
 
 CheckInputFactory::CheckInputFactory() {}
 
-static CheckInput* createCheckInput(InputType type) {
-    switch (type) {
-    case InputType::GUI:
-        return new GUICheckInputs(&display);
-    case InputType::Console:
-        return new ConsoleCheckInputs(&display);
-    default:
-        return nullptr;
+static std::unique_ptr<CheckInputs> CheckInputFactory::createCheckInput(InputType type) {
+    if (type == InputType::GUI) {
+        return std::make_unique<GUICheckInput>();
+    } else if (type == InputType::Console) {
+        return std::make_unique<ConsoleCheckInput>();
+    } else {
+        throw std::invalid_argument("Invalid InputType");
     }
 }
