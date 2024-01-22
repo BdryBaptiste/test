@@ -16,6 +16,7 @@
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QLabel >
 
 QT_BEGIN_NAMESPACE
 
@@ -32,6 +33,7 @@ public:
     QPushButton *ComputerVsComputerButton;
     QPushButton *StartButton;
     QTableWidget *Board;
+    QLabel  *Label;
 
     void setupUi(QMainWindow  *MainWindow)
     {
@@ -47,41 +49,44 @@ public:
 
         verticalLayout = new QVBoxLayout(centralWidget);
         verticalLayout->setObjectName("verticalLayout");
+
+        Label = new QLabel (MainWindow);
+        Label->setText("Welcome !");
+        Label->setAlignment(Qt::AlignCenter);
+        Label->adjustSize();
+
         TicTacToeButton = new QPushButton(MainWindow);
         TicTacToeButton->setObjectName("TicTacToeButton");
-
         verticalLayout->addWidget(TicTacToeButton);
+        TicTacToeButton->hide();
 
         ConnectFourButton = new QPushButton(MainWindow);
         ConnectFourButton->setObjectName("ConnectFourButton");
-
         verticalLayout->addWidget(ConnectFourButton);
+        ConnectFourButton->hide();
 
         OthelloButton = new QPushButton(MainWindow);
         OthelloButton->setObjectName("OthelloButton");
-
         verticalLayout->addWidget(OthelloButton);
+        OthelloButton->hide();
 
         DraughtsButton = new QPushButton(MainWindow);
         DraughtsButton->setObjectName("DraughtsButton");
-
         verticalLayout->addWidget(DraughtsButton);
+        DraughtsButton->hide();
 
         PlayerVsComputerButton = new QPushButton(MainWindow);
         PlayerVsComputerButton->setObjectName("PlayerVsComputerButton");
-
         verticalLayout->addWidget(PlayerVsComputerButton);
-        PlayerVsComputerButton->hide();
+
 
         TwoPlayersButton = new QPushButton(MainWindow);
         TwoPlayersButton->setObjectName("TwoPlayersButton");
         verticalLayout->addWidget(TwoPlayersButton);
-        TwoPlayersButton->hide();
 
         ComputerVsComputerButton = new QPushButton(MainWindow);
         ComputerVsComputerButton->setObjectName("ComputerVsComputerButton");
         verticalLayout->addWidget(ComputerVsComputerButton);
-        ComputerVsComputerButton->hide();
 
         StartButton = new QPushButton(MainWindow);
         StartButton->setObjectName("StartButton");

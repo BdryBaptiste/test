@@ -8,7 +8,6 @@ GUIDisplay::GUIDisplay(QWidget *parent) : ui(new Ui::MainWindow), mainWindow(new
 void GUIDisplay::displayBoard(const Board& board) {
     int rows = board.getRows();
     int cols = board.getCols();
-    QTableWidgetItem* item = new QTableWidgetItem;
 
     if(cols!=ui->Board->columnCount()){
         ui->Board->setColumnCount(cols);
@@ -21,12 +20,15 @@ void GUIDisplay::displayBoard(const Board& board) {
         for (int j = 0; j < cols; ++j) {
             Symbol cellSymbol = board.getCell(i, j);
             QString cellChar = QString::fromStdString(symbolToString(cellSymbol));
+            QTableWidgetItem* item = new QTableWidgetItem;
             item->setText(QString(cellChar));
             ui->Board->setItem(i, j, item);
         }
     }
 
     ui->Board->show();
+
+    QApplication::processEvents();
 
 }
 
@@ -37,7 +39,9 @@ void GUIDisplay::displayPositionChoice(const Board& board, const std::vector<std
 
 
 void GUIDisplay::showMessage(const std::string& message) {
-
+    qDebug() << "Debug " << QString::fromStdString(message);
+    ui->Label->setText(QString::fromStdString(message));
+    QApplication::processEvents();
 }
 
 void GUIDisplay::displayInstructions(){

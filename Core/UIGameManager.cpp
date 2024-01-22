@@ -3,8 +3,8 @@
 
 UIGameManager::UIGameManager(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
-    //display.reset(new GUIDisplay());
-    //checkInputs = CheckInputs::getInstance(*display);
+    display.reset(new GUIDisplay());
+    checkInputs = CheckInputs::getInstance(*display);
 
     ui->setupUi(this);
 
@@ -28,24 +28,21 @@ UIGameManager::~UIGameManager()
 void UIGameManager::onTicTacToeButtonClicked(){
     currentGame.reset(new TicTacToe(*display, player1.get(), player2.get()));
 
-    hideGameButtons();
-    showGameModeButtons();
+    ui->StartButton->setEnabled(true);
 }
 
 void UIGameManager::onOthelloButtonClicked()
 {
     currentGame.reset(new Othello(*display, player1.get(), player2.get()));
 
-    hideGameButtons();
-    showGameModeButtons();
+    ui->StartButton->setEnabled(true);
 }
 
 void UIGameManager::onConnectFourButtonClicked()
 {
     currentGame.reset(new ConnectFour(*display, player1.get(), player2.get()));
 
-    hideGameButtons();
-    showGameModeButtons();
+    ui->StartButton->setEnabled(true);
 }
 
 void UIGameManager::onDraugthsButtonClicked()
@@ -58,53 +55,56 @@ void UIGameManager::onDraugthsButtonClicked()
 
 void UIGameManager::onPlayerVsComputerButtonClicked()
 {
-    ui->StartButton->setEnabled(true);
-
     player1.reset(new HumanPlayer(*display));
     player2.reset(new AIPlayer());
+
+    hideGameModeButtons();
+    showGameButtons();
 }
 
 void UIGameManager::onTwoPlayersButtonClicked()
 {
-    ui->StartButton->setEnabled(true);
-
     player1.reset(new HumanPlayer(*display));
     player2.reset(new HumanPlayer(*display));
+
+    hideGameModeButtons();
+    showGameButtons();
 }
 
 void UIGameManager::onComputerVsComputerButtonClicked()
 {
-    ui->StartButton->setEnabled(true);
-
     player1.reset(new AIPlayer());
     player2.reset(new AIPlayer());
+
+    hideGameModeButtons();
+    showGameButtons();
 }
 
 void UIGameManager::onStartButtonClicked()
-{
-    ui->PlayerVsComputerButton->hide();
-    ui->TwoPlayersButton->hide();
-    ui->ComputerVsComputerButton->hide();
-    ui->StartButton->hide();
-
-    ui->Board->show();
-
-    //currentGame->playGame();
-}
-
-void UIGameManager::hideGameButtons()
 {
     ui->TicTacToeButton->hide();
     ui->ConnectFourButton->hide();
     ui->OthelloButton->hide();
     ui->DraughtsButton->hide();
+    ui->StartButton->hide();
+
+    currentGame->playGame();
 }
 
-void UIGameManager::showGameModeButtons()
+void UIGameManager::hideGameModeButtons()
 {
-    ui->PlayerVsComputerButton->show();
-    ui->TwoPlayersButton->show();
-    ui->ComputerVsComputerButton->show();
+    ui->PlayerVsComputerButton->hide();
+    ui->TwoPlayersButton->hide();
+    ui->ComputerVsComputerButton->hide();
+
+}
+
+void UIGameManager::showGameButtons()
+{
+    ui->TicTacToeButton->show();
+    ui->ConnectFourButton->show();
+    ui->OthelloButton->show();
+    ui->DraughtsButton->show();
     ui->StartButton->show();
 }
 

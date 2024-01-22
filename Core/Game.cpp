@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <sstream>
+#include <QMessageBox>
 
 Game::Game(int rows, int cols, Display& display)
     : gameBoard(rows, cols), currentPlayer(Symbol::PLAYER_X), display(display) {
@@ -27,9 +28,14 @@ void Game::endGame(GameOutcome outcome) {
 
 
 void Game::playGame() {
+
     Symbol winner;
 
     displayInstructions();
+
+    QMessageBox msgBox;
+    msgBox.setText("The application is paused. Close this to continue.");
+    msgBox.exec();
 
     while (true) {
         display.displayBoard(gameBoard);
