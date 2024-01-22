@@ -1,10 +1,18 @@
-#ifndef GUICHECKINPUT_H
-#define GUICHECKINPUT_H
+#ifndef GUICHECKINPUTS_H
+#define GUICHECKINPUTS_H
 
-class GUICheckInput : public CheckInputs
-{
+#include "CheckInputs.h"
+
+class GUICheckInputs : public CheckInputs {
+private:
+    static GUICheckInputs* instance;
+    GUICheckInputs(Display& display);
+
 public:
-    GUICheckInput();
+    int getIntegerInput() override;
+    char getCharInput() override;
+    std::string getStringInput() override;
+    std::pair<int, int> getTwoIntsInput() override;
 };
 
-#endif // GUICHECKINPUT_H
+#endif // GUICHECKINPUTS_H

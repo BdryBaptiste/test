@@ -29,8 +29,8 @@ void ConnectFour::playTurn() {
         Player* currentPlayerPointer = (currentPlayer == Symbol::PLAYER_X) ? this->player1.get() : this->player2.get();
         display.showMessage("On demande au joueur de pick un nombre");
         col = currentPlayerPointer->getSingleInput(gameBoard, NUM_COLS);
-        display.showMessage("Le joueur a pick un nombre, c'est " + col);
-        
+        display.showMessage(&"Le joueur a pick un nombre, c'est " [ col]);
+
         // La colonne doit être ajustée pour l'indexation du tableau (0 à 6)
         int adjustedCol = col - 1;
 

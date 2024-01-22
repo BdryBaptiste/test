@@ -1,15 +1,8 @@
 #include "ConsoleCheckInput.h"
 
-ConsoleheckInputs::ConsoleCheckInputs(Display& display) : display(display) {}
-
 ConsoleCheckInputs* ConsoleCheckInputs::instance = nullptr;
 
-ConsoleCheckInputs* ConsoleCheckInputs::getInstance(Display& display) {
-    if (instance == nullptr) {
-        instance = new ConsoleCheckInputs(display);
-    }
-    return instance;
-}
+ConsoleCheckInputs::ConsoleCheckInputs(Display& display) : CheckInputs(display) {}
 
 int ConsoleCheckInputs::getIntegerInput() {
     int input;
