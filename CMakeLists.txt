@@ -32,6 +32,7 @@ add_executable(test
   Core/Game.cpp
   Core/utils/CheckInputs.cpp
   Core/Display/DisplayConsole.cpp
+  Core/Display/GUIDisplay.cpp
   Core/Display/Display.cpp
   Games/TicTacToe/TicTacToe.cpp
   Games/ConnectFour/ConnectFour.cpp

@@ -5,12 +5,6 @@
 #include "Cell.h"
 
 class Board {
-private:
-    std::vector<std::vector<Cell>> grid;
-    int rows;
-    int cols;
-    int filledCells = 0;
-
 public:
     Board(int r, int c);
     Symbol getCell(int row, int col) const;
@@ -22,6 +16,12 @@ public:
     bool isValidPosition(int row, int col) const;
     bool isBoardFull() const;
     bool checkLine(int startRow, int startCol, int deltaRow, int deltaCol, Symbol player, int winCondition) const;
+
+private:
+    std::vector<std::vector<Cell>> grid;
+    int rows;
+    int cols;
+    int filledCells = 0;
 };
 
 #endif // BOARD_H

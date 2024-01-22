@@ -3,8 +3,8 @@
 
 UIGameManager::UIGameManager(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
-    // GUIObserver guiObserver;
-    // display->addObserver(&guiObserver);
+    //display.reset(new GUIDisplay());
+    //checkInputs = CheckInputs::getInstance(*display);
 
     ui->setupUi(this);
 
@@ -50,7 +50,6 @@ void UIGameManager::onConnectFourButtonClicked()
 
 void UIGameManager::onDraugthsButtonClicked()
 {
-    std::cout<<"test";
     // currentGame.reset(new Draughts(*display, player1.get(), player2.get()));
     //
     // hideGameButtons();
@@ -83,7 +82,14 @@ void UIGameManager::onComputerVsComputerButtonClicked()
 
 void UIGameManager::onStartButtonClicked()
 {
-    // currentGame->playGame();
+    ui->PlayerVsComputerButton->hide();
+    ui->TwoPlayersButton->hide();
+    ui->ComputerVsComputerButton->hide();
+    ui->StartButton->hide();
+
+    ui->Board->show();
+
+    //currentGame->playGame();
 }
 
 void UIGameManager::hideGameButtons()

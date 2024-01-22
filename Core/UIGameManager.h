@@ -4,6 +4,9 @@
 #include <QtWidgets>
 #include "ui_MainWindow.h"
 #include "Display/Display.h"
+#include "Display/GUIDisplay.h"
+#include "GameManager.h"
+#include "Utils/CheckInputs.h"
 #include "Game.h"
 #include "../Games/TicTacToe/TicTacToe.h"
 #include "../Games/ConnectFour/ConnectFour.h"
@@ -18,6 +21,7 @@ public:
     ~UIGameManager();
 
 private:
+    CheckInputs* checkInputs;
     Ui::MainWindow *ui;
     std::shared_ptr<Display> display;
     std::shared_ptr<Player> player1;

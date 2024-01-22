@@ -14,6 +14,8 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QMainWindow>
 
 QT_BEGIN_NAMESPACE
 
@@ -29,6 +31,7 @@ public:
     QPushButton *PlayerVsComputerButton;
     QPushButton *ComputerVsComputerButton;
     QPushButton *StartButton;
+    QTableWidget *Board;
 
     void setupUi(QMainWindow  *MainWindow)
     {
@@ -85,6 +88,10 @@ public:
         verticalLayout->addWidget(StartButton);
         StartButton->setEnabled(false);
 
+        Board = new QTableWidget(MainWindow);
+        Board->setObjectName("Board");
+        verticalLayout->addWidget(Board);
+        Board->hide();
 
         retranslateUi(MainWindow);
 
