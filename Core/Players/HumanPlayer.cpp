@@ -9,7 +9,7 @@ std::pair<int, int> HumanPlayer::getDoubleInput(const Board& board) {
 
     // Valider l'entrée ou la demander à nouveau si nécessaire
     while (!board.isValidPosition(row - 1, col - 1) || !board.isCellEmpty(row - 1, col - 1)) {
-        display.notifyWarningUpdate("Mouvement invalide. Veuillez réessayer.");
+        display.showMessage("Mouvement invalide. Veuillez réessayer.");
         std::tie(row, col) = CheckInputs::getInstance(display)->getTwoIntsInput();
     }
 

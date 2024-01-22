@@ -2,19 +2,13 @@
 #define GAMEMANAGER_H
 
 #include <memory>
-#include "Display/Display.h"
+#include "Display/DisplayConsole.h"
 #include "Game.h"
 #include "Players/AIPlayer.h"
 #include "Players/HumanPlayer.h"
 #include "../Games/TicTacToe/TicTacToe.h"
 #include "../Games/ConnectFour/ConnectFour.h"
 #include "../Games/Othello/Othello.h"
-#include "Observer/InterfaceObserver.h"
-#include "Observer/ConsoleObserver.h"
-#include "Observer/GUIObserver.h"
-
-#include <iostream>
-#include <cctype> // Pour tolower
 //#include "../Games/Draughts/Draughts.h"
 
 class GameManager {
@@ -24,7 +18,7 @@ public:
 
 protected:
     CheckInputs* checkInputs;
-    std::shared_ptr<Display> display;
+    std::shared_ptr<DisplayConsole> display;
     std::shared_ptr<Player> player1;
     std::shared_ptr<Player> player2;
     std::shared_ptr<Game> currentGame;

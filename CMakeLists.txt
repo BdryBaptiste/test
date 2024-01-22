@@ -37,9 +37,6 @@ add_executable(test
   Games/ConnectFour/ConnectFour.cpp
   Common/Board.cpp
   Games/Othello/Othello.cpp
-  Core/Observer/InterfaceObserver.cpp
-  Core/Observer/ConsoleObserver.cpp
-  Core/Observer/GUIObserver.cpp
 )
 target_link_libraries(test Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets)
 

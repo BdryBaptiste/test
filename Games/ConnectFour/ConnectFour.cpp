@@ -27,9 +27,9 @@ void ConnectFour::playTurn() {
 
     do {
         Player* currentPlayerPointer = (currentPlayer == Symbol::PLAYER_X) ? this->player1.get() : this->player2.get();
-        display.notifyMessageUpdate("On demande au joueur de pick un nombre");
+        display.showMessage("On demande au joueur de pick un nombre");
         col = currentPlayerPointer->getSingleInput(gameBoard, NUM_COLS);
-        display.notifyMessageUpdate("Le joueur a pick un nombre, c'est " + col);
+        display.showMessage("Le joueur a pick un nombre, c'est " + col);
         
         // La colonne doit être ajustée pour l'indexation du tableau (0 à 6)
         int adjustedCol = col - 1;
@@ -51,7 +51,7 @@ void ConnectFour::playTurn() {
             } else {
                 messageStream << "La colonne " << col << " est pleine. Veuillez choisir une autre colonne.";
             }
-            display.notifyWarningUpdate(messageStream.str());
+            display.showMessage(messageStream.str());
         }
     } while (true);
 }
@@ -78,7 +78,7 @@ Symbol ConnectFour::checkWinner() {
 
 
 void ConnectFour::displayInstructions() {
-    display.notifyInstructionsUpdate("Chaque joueur choisit une colonne pour déposer son jeton. Le but est d'aligner 4 jetons horizontalement, verticalement ou en diagonale.");
+    display.showMessage("Chaque joueur choisit une colonne pour déposer son jeton. Le but est d'aligner 4 jetons horizontalement, verticalement ou en diagonale.");
 }
 
 std::string ConnectFour::getVictoryMessage(Symbol winner) const {

@@ -57,7 +57,7 @@ Symbol TicTacToe::checkWinner() {
 }
 
 void TicTacToe::displayInstructions() {
-    display.notifyInstructionsUpdate("Chaque joueur choisit une cellule vide où placer son pion. Le but est d'aligner 3 pions horizontalement, verticalement ou en diagonale.");
+    display.showMessage("Chaque joueur choisit une cellule vide où placer son pion. Le but est d'aligner 3 pions horizontalement, verticalement ou en diagonale.");
 }
 
 std::string TicTacToe::getVictoryMessage(Symbol winner) const {

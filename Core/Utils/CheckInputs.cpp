@@ -22,7 +22,7 @@ int CheckInputs::getIntegerInput() {
         if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            display.notifyWarningUpdate("Entrée invalide. Veuillez entrer un entier : ");
+            display.showMessage("Entrée invalide. Veuillez entrer un entier : ");
         } else {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             return input;
@@ -37,7 +37,7 @@ char CheckInputs::getCharInput() {
         if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            display.notifyWarningUpdate("Entrée invalide. Veuillez entrer un caractère : ");
+            display.showMessage("Entrée invalide. Veuillez entrer un caractère : ");
         } else {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             return input;
@@ -52,7 +52,7 @@ std::string CheckInputs::getStringInput() {
         if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            display.notifyWarningUpdate("Entrée invalide. Veuillez entrer une chaîne de caractères : ");
+            display.showMessage("Entrée invalide. Veuillez entrer une chaîne de caractères : ");
         } else {
             return input;
         }
@@ -68,7 +68,7 @@ std::pair<int, int> CheckInputs::getTwoIntsInput() {
         if (iss >> num1 && iss >> num2) {
             return std::make_pair(num1, num2);
         } else {
-            display.notifyWarningUpdate("Entrée invalide. Veuillez entrer deux entiers séparés par un espace : ");
+            display.showMessage("Entrée invalide. Veuillez entrer deux entiers séparés par un espace : ");
         }
     }
 }
