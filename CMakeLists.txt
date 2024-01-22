@@ -31,6 +31,8 @@ add_executable(test
   Core/UIGameManager.cpp
   Core/Game.cpp
   Core/utils/CheckInputs.cpp
+  Core/utils/ConsoleCheckInput.cpp
+  Core/utils/GUICheckInput.cpp
   Core/Display/DisplayConsole.cpp
   Core/Display/GUIDisplay.cpp
   Core/Display/Display.cpp

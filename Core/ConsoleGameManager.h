@@ -2,6 +2,7 @@
 #define CONSOLEGAMEMANAGER_H
 
 #include "GameManager.h"
+#include "Utils/ConsoleCheckInput.h"
 
 class ConsoleGameManager : public GameManager
 {
@@ -10,6 +11,7 @@ public:
     void startGameLoop() override;
 
 private:
+    ConsoleCheckInputs* checkInputs;
     int getGameChoice() override;
     char getReplayChoice() override;
     int getModeChoice() override;

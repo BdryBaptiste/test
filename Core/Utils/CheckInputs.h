@@ -12,11 +12,11 @@ private:
     CheckInputs(Display& display);
 
 public:
-    static CheckInputs* getInstance(Display& display);
-    int getIntegerInput();
-    char getCharInput();
-    std::string getStringInput();
-    std::pair<int, int> getTwoIntsInput();
+    virtual  CheckInputs* getInstance(Display& display);
+    virtual int getIntegerInput() = 0;
+    virtual char getCharInput() = 0;
+    virtual std::string getStringInput() = 0;
+    virtual std::pair<int, int> getTwoIntsInput();
 };
 
 #endif // CHECKINPUTS_H

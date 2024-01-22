@@ -2,7 +2,7 @@
 
 ConsoleGameManager::ConsoleGameManager() {
     display.reset(new DisplayConsole());
-    checkInputs = CheckInputs::getInstance(*display);
+    checkInputs = ConsoleCheckInputs::getInstance(*display);
 }
 
 void ConsoleGameManager::startGameLoop() {

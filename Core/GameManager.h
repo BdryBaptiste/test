@@ -17,7 +17,6 @@ public:
     virtual void startGameLoop() = 0;
 
 protected:
-    CheckInputs* checkInputs;
     std::shared_ptr<DisplayConsole> display;
     std::shared_ptr<Player> player1;
     std::shared_ptr<Player> player2;
