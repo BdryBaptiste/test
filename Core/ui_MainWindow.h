@@ -15,6 +15,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QLabel >
 
@@ -34,6 +35,7 @@ public:
     QPushButton *StartButton;
     QTableWidget *Board;
     QLabel  *Label;
+    QWidget *parentWidget;
 
     void setupUi(QMainWindow  *MainWindow)
     {
@@ -71,7 +73,7 @@ public:
         OthelloButton->hide();
 
         DraughtsButton = new QPushButton(MainWindow);
-        DraughtsButton->setObjectName("DraughtsButton");
+        DraughtsButton->setObjectName("DraugthsButton");
         verticalLayout->addWidget(DraughtsButton);
         DraughtsButton->hide();
 
@@ -95,8 +97,8 @@ public:
 
         Board = new QTableWidget(MainWindow);
         Board->setObjectName("Board");
+        Board->setEnabled(true);
         verticalLayout->addWidget(Board);
-        Board->hide();
 
         retranslateUi(MainWindow);
 

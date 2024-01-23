@@ -9,9 +9,9 @@ void GUIDisplay::displayBoard(const Board& board) {
     int rows = board.getRows();
     int cols = board.getCols();
 
-    if(cols!=ui->Board->columnCount()){
+    if(ui->Board->columnCount() != cols){
         ui->Board->setColumnCount(cols);
-        if(rows!=ui->Board->rowCount()){
+        if(ui->Board->rowCount() != rows){
             ui->Board->setRowCount(rows);
         }
     }
@@ -20,13 +20,12 @@ void GUIDisplay::displayBoard(const Board& board) {
         for (int j = 0; j < cols; ++j) {
             Symbol cellSymbol = board.getCell(i, j);
             QString cellChar = QString::fromStdString(symbolToString(cellSymbol));
-            QTableWidgetItem* item = new QTableWidgetItem;
-            item->setText(QString(cellChar));
-            ui->Board->setItem(i, j, item);
+            QTableWidgetItem *newItem = new QTableWidgetItem();
+            newItem->setText(cellChar);
+            ui->Board->setItem(i, j, newItem);
+
         }
     }
-
-    ui->Board->show();
 
     QApplication::processEvents();
 

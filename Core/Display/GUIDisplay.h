@@ -6,7 +6,8 @@
 #include <string>
 #include "../ui_MainWindow.h"
 
-class GUIDisplay :public Display {
+class GUIDisplay :public QMainWindow, public Display {
+    Q_OBJECT
 public:
     Ui::MainWindow *ui;
     QMainWindow *mainWindow;
@@ -15,6 +16,7 @@ public:
     void displayPositionChoice(const Board& board, const std::vector<std::pair<int, int>>& validMoves) override;
     void showMessage(const std::string& message) override;
     void displayInstructions() override;
+
 };
 
 #endif // GUIDISPLAY_H

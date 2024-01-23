@@ -12,6 +12,8 @@ public:
     void startGameLoop() override;
 
 private:
+    std::shared_ptr<DisplayConsole> display;
+    std::shared_ptr<ConsoleCheckInputs> checkInput;
     int getGameChoice();
     char getReplayChoice();
     int getModeChoice();

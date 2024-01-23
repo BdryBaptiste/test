@@ -1,22 +1,34 @@
 #include "GUICheckInput.h"
+#include <QDebug>
 
 
-GUICheckInputs::GUICheckInputs(Display& display) : CheckInputs(display) {}
+GUICheckInputs::GUICheckInputs(Display& display, QWidget *parent) : CheckInputs(display), ui(new Ui::MainWindow), mainWindow(new QMainWindow(parent)) {
+    ui->setupUi(this);
+    connect(ui->Board, &QTableWidget::cellClicked, this, &GUICheckInputs::on_Board_cellClicked);
+}
 
 int GUICheckInputs::getIntegerInput() {
-    // GUI-specific implementation
-}
+    waitingForInput = true;
 
-char GUICheckInputs::getCharInput() {
-    // GUI-specific implementation
-}
-
-std::string GUICheckInputs::getStringInput() {
-    // GUI-specific implementation
+    while (waitingForInput) {
+        QApplication::processEvents();
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    }
+    return position.second;
 }
 
 std::pair<int, int> GUICheckInputs::getTwoIntsInput() {
-    // GUI-specific implementation
+    waitingForInput = true;
+
+    while (waitingForInput) {
+        QApplication::processEvents();
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    }
+    return position;
 }
 
-// ... (other methods if necessary)
+void GUICheckInputs::on_Board_cellClicked(int row, int column){
+    position.first = row;
+    position.second = column;
+    waitingForInput = false;
+}

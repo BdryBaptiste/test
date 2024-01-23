@@ -18,21 +18,23 @@ public:
     explicit UIGameManager(QWidget *parent = nullptr);
     ~UIGameManager();
     void startGameLoop() override;
+    std::shared_ptr<GUIDisplay> display;
+    std::shared_ptr<GUICheckInputs> checkInput;
 
 private:
     Ui::MainWindow *ui;
 
 private slots:
-    void onTicTacToeButtonClicked();
-    void onOthelloButtonClicked();
-    void onConnectFourButtonClicked();
-    void onDraugthsButtonClicked();
+    void on_TicTacToeButton_clicked();
+    void on_OthelloButton_clicked();
+    void on_ConnectFourButton_clicked();
+    void on_DraugthsButton_clicked();
 
-    void onPlayerVsComputerButtonClicked();
-    void onTwoPlayersButtonClicked();
-    void onComputerVsComputerButtonClicked();
+    void on_PlayerVsComputerButton_clicked();
+    void on_TwoPlayersButton_clicked();
+    void on_ComputerVsComputerButton_clicked();
 
-    void onStartButtonClicked();
+    void on_StartButton_clicked();
 
     void hideGameModeButtons();
     void showGameButtons();

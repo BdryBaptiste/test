@@ -7,21 +7,11 @@ UIGameManager::UIGameManager(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     checkInput.reset(new GUICheckInputs(*display));
 
     ui->setupUi(this);
-
-    connect(ui->TicTacToeButton, SIGNAL(clicked()), this, SLOT(onTicTacToeButtonClicked()));
-    connect(ui->OthelloButton, SIGNAL(clicked()), this, SLOT(onOthelloButtonClicked()));
-    connect(ui->ConnectFourButton, SIGNAL(clicked()), this, SLOT(onConnectFourButtonClicked()));
-    connect(ui->DraughtsButton, SIGNAL(clicked()), this, SLOT(onDraugthsButtonClicked()));
-
-    connect(ui->PlayerVsComputerButton, SIGNAL(clicked()), this, SLOT(onPlayerVsComputerButtonClicked()));
-    connect(ui->TwoPlayersButton, SIGNAL(clicked()), this, SLOT(onTwoPlayersButtonClicked()));
-    connect(ui->ComputerVsComputerButton, SIGNAL(clicked()), this, SLOT(onComputerVsComputerButtonClicked()));
-
-    connect(ui->StartButton, SIGNAL(clicked()), this, SLOT(onStartButtonClicked()));
 }
 
 void UIGameManager::startGameLoop(){
     this->show();
+    QMetaObject::connectSlotsByName(this);
 }
 
 void configurePlayers(int modeChoice, std::shared_ptr<Player>& player1, std::shared_ptr<Player>& player2){
@@ -34,35 +24,34 @@ UIGameManager::~UIGameManager()
     delete ui;
 }
 
-void UIGameManager::onTicTacToeButtonClicked(){
+void UIGameManager::on_TicTacToeButton_clicked(){
     currentGame.reset(new TicTacToe(*display, player1.get(), player2.get()));
 
     ui->StartButton->setEnabled(true);
 }
 
-void UIGameManager::onOthelloButtonClicked()
+void UIGameManager::on_OthelloButton_clicked()
 {
     currentGame.reset(new Othello(*display, player1.get(), player2.get()));
 
     ui->StartButton->setEnabled(true);
 }
 
-void UIGameManager::onConnectFourButtonClicked()
+void UIGameManager::on_ConnectFourButton_clicked()
 {
     currentGame.reset(new ConnectFour(*display, player1.get(), player2.get()));
 
     ui->StartButton->setEnabled(true);
 }
 
-void UIGameManager::onDraugthsButtonClicked()
+void UIGameManager::on_DraugthsButton_clicked()
 {
     // currentGame.reset(new Draughts(*display, player1.get(), player2.get()));
     //
-    // hideGameButtons();
-    // showGameModeButtons();
+    ui->StartButton->setEnabled(true);
 }
 
-void UIGameManager::onPlayerVsComputerButtonClicked()
+void UIGameManager::on_PlayerVsComputerButton_clicked()
 {
     player1.reset(new HumanPlayer(*display, *checkInput));
     player2.reset(new AIPlayer());
@@ -71,7 +60,7 @@ void UIGameManager::onPlayerVsComputerButtonClicked()
     showGameButtons();
 }
 
-void UIGameManager::onTwoPlayersButtonClicked()
+void UIGameManager::on_TwoPlayersButton_clicked()
 {
     player1.reset(new HumanPlayer(*display, *checkInput));
     player2.reset(new HumanPlayer(*display, *checkInput));
@@ -80,7 +69,7 @@ void UIGameManager::onTwoPlayersButtonClicked()
     showGameButtons();
 }
 
-void UIGameManager::onComputerVsComputerButtonClicked()
+void UIGameManager::on_ComputerVsComputerButton_clicked()
 {
     player1.reset(new AIPlayer());
     player2.reset(new AIPlayer());
@@ -89,7 +78,7 @@ void UIGameManager::onComputerVsComputerButtonClicked()
     showGameButtons();
 }
 
-void UIGameManager::onStartButtonClicked()
+void UIGameManager::on_StartButton_clicked()
 {
     ui->TicTacToeButton->hide();
     ui->ConnectFourButton->hide();

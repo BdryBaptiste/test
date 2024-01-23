@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <ctime>
+#include <QDebug>
 
 const int BOARD_SIZE = 3;
 const int FIRST_CELL = 0;
