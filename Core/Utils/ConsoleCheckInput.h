@@ -15,6 +15,8 @@ private:
 public:
     ConsoleCheckInputs(Display& display);
     int getIntegerInput() override;
+    char getCharInput() override;
+    // std::string getStringInput() override;
     std::pair<int, int> getTwoIntsInput() override;
 };
 

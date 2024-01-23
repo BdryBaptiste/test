@@ -32,3 +32,11 @@ void GUICheckInputs::on_Board_cellClicked(int row, int column){
     position.second = column;
     waitingForInput = false;
 }
+
+char GUICheckInputs::getCharInput(){
+    return 'n';
+}
+
+// std::string GUICheckInputs::getStringInput(){
+//     return "sefsdg";
+// }

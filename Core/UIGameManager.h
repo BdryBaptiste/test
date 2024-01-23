@@ -37,6 +37,7 @@ private slots:
     void on_StartButton_clicked();
 
     void hideGameModeButtons();
+    void hideGameButtons();
     void showGameButtons();
 };
 

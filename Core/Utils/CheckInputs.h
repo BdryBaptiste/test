@@ -15,6 +15,8 @@ protected:
 public:
     virtual ~CheckInputs() = default;
     virtual int getIntegerInput() = 0;
+    virtual char getCharInput() = 0;
+    // virtual std::string getStringInput() = 0;
     virtual std::pair<int, int> getTwoIntsInput() = 0;
 
     // Other existing methods

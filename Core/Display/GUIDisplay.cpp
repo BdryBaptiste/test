@@ -27,6 +27,8 @@ void GUIDisplay::displayBoard(const Board& board) {
         }
     }
 
+    ui->Board->update();
+
     QApplication::processEvents();
 
 }

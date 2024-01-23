@@ -24,7 +24,10 @@ UIGameManager::~UIGameManager()
     delete ui;
 }
 
-void UIGameManager::on_TicTacToeButton_clicked(){
+void UIGameManager::on_TicTacToeButton_clicked()
+{
+    hideGameButtons();
+
     currentGame.reset(new TicTacToe(*display, player1.get(), player2.get()));
 
     ui->StartButton->setEnabled(true);
@@ -32,6 +35,8 @@ void UIGameManager::on_TicTacToeButton_clicked(){
 
 void UIGameManager::on_OthelloButton_clicked()
 {
+    hideGameButtons();
+
     currentGame.reset(new Othello(*display, player1.get(), player2.get()));
 
     ui->StartButton->setEnabled(true);
@@ -39,6 +44,8 @@ void UIGameManager::on_OthelloButton_clicked()
 
 void UIGameManager::on_ConnectFourButton_clicked()
 {
+    hideGameButtons();
+
     currentGame.reset(new ConnectFour(*display, player1.get(), player2.get()));
 
     ui->StartButton->setEnabled(true);
@@ -46,8 +53,10 @@ void UIGameManager::on_ConnectFourButton_clicked()
 
 void UIGameManager::on_DraugthsButton_clicked()
 {
+    hideGameButtons();
+
     // currentGame.reset(new Draughts(*display, player1.get(), player2.get()));
-    //
+
     ui->StartButton->setEnabled(true);
 }
 
@@ -104,5 +113,12 @@ void UIGameManager::showGameButtons()
     ui->OthelloButton->show();
     ui->DraughtsButton->show();
     ui->StartButton->show();
+}
+
+void UIGameManager::hideGameButtons(){
+    ui->TicTacToeButton->hide();
+    ui->ConnectFourButton->hide();
+    ui->OthelloButton->hide();
+    ui->DraughtsButton->hide();
 }
 

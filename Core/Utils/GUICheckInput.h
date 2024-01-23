@@ -16,6 +16,8 @@ public:
     QMainWindow *mainWindow;
     GUICheckInputs(Display& display, QWidget *parent = nullptr);
     int getIntegerInput() override;
+    char getCharInput() override;
+    // std::string getStringInput() override;
     std::pair<int, int> getTwoIntsInput() override;
     std::pair<int, int> position;
     bool waitingForInput;
