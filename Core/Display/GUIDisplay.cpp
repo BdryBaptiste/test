@@ -31,6 +31,8 @@ void GUIDisplay::displayBoard(const Board& board) {
 
     QApplication::processEvents();
 
+    qDebug() << "Debug Board updated";
+
 }
 
 
