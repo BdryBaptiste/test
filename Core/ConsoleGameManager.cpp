@@ -18,7 +18,6 @@ void ConsoleGameManager::startGameLoop() {
         display->showMessage("4. Daughter");
 
         int gameChoice = getGameChoice();
-        std::shared_ptr<Player> player1, player2;
         int modeChoice = getModeChoice();
 
         configurePlayers(modeChoice, player1, player2);
@@ -87,9 +86,6 @@ char ConsoleGameManager::getReplayChoice() {
 }
 
 void ConsoleGameManager::configurePlayers(int modeChoice, std::shared_ptr<Player>& player1, std::shared_ptr<Player>& player2) {;
-    player1.reset();
-    player2.reset();
-
     switch (modeChoice) {
     case 1:  // Joueur vs Ordinateur
         player1.reset(new HumanPlayer(*display, *checkInput));

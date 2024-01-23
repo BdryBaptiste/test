@@ -17,6 +17,7 @@ class UIGameManager : public QMainWindow, public GameManager
 public:
     explicit UIGameManager(QWidget *parent = nullptr);
     ~UIGameManager();
+    void startGameLoop() override;
 
 private:
     Ui::MainWindow *ui;
@@ -35,7 +36,6 @@ private slots:
 
     void hideGameModeButtons();
     void showGameButtons();
-
 };
 
 #endif // UIGAMEMANAGER_H

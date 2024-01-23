@@ -20,6 +20,15 @@ UIGameManager::UIGameManager(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     connect(ui->StartButton, SIGNAL(clicked()), this, SLOT(onStartButtonClicked()));
 }
 
+void UIGameManager::startGameLoop(){
+    this->show();
+}
+
+void configurePlayers(int modeChoice, std::shared_ptr<Player>& player1, std::shared_ptr<Player>& player2){
+
+}
+
+
 UIGameManager::~UIGameManager()
 {
     delete ui;
@@ -55,7 +64,7 @@ void UIGameManager::onDraugthsButtonClicked()
 
 void UIGameManager::onPlayerVsComputerButtonClicked()
 {
-    player1.reset(new HumanPlayer(*display));
+    player1.reset(new HumanPlayer(*display, *checkInput));
     player2.reset(new AIPlayer());
 
     hideGameModeButtons();
@@ -64,8 +73,8 @@ void UIGameManager::onPlayerVsComputerButtonClicked()
 
 void UIGameManager::onTwoPlayersButtonClicked()
 {
-    player1.reset(new HumanPlayer(*display));
-    player2.reset(new HumanPlayer(*display));
+    player1.reset(new HumanPlayer(*display, *checkInput));
+    player2.reset(new HumanPlayer(*display, *checkInput));
 
     hideGameModeButtons();
     showGameButtons();
