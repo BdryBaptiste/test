@@ -1,23 +1,23 @@
 #include "ConsoleGameManager.h"
 
+
 ConsoleGameManager::ConsoleGameManager() {
-    display.reset(new Display());
-    checkInputs = CheckInputs::getInstance(*display);
+    display.reset(new DisplayConsole());
+
+    checkInput.reset(new ConsoleCheckInputs(*display));
 }
 
 void ConsoleGameManager::startGameLoop() {
     bool playAgain = true;
-    ConsoleObserver consoleObserver;
-    display->addObserver(&consoleObserver);
 
     while (playAgain) {
-
-        display->notifyStart();
-        display->notifyInstructionsUpdate("Choisissez un jeu:");
-        display->notifyGameChoiceMenuUpdate();
+        display->showMessage("Choisissez un jeu:");
+        display->showMessage("1. Tic Tac Toe");
+        display->showMessage("2. Connect Four");
+        display->showMessage("3. Othello");
+        display->showMessage("4. Daughter");
 
         int gameChoice = getGameChoice();
-        std::shared_ptr<Player> player1, player2;
         int modeChoice = getModeChoice();
 
         configurePlayers(modeChoice, player1, player2);
@@ -33,7 +33,7 @@ void ConsoleGameManager::startGameLoop() {
             currentGame.reset(new Othello(*display, player1.get(), player2.get()));
             break;
         default:
-            display->notifyWarningUpdate("Choix invalide!");
+            display->showMessage("Choix invalide!");
             continue;
         }
 
@@ -45,38 +45,40 @@ void ConsoleGameManager::startGameLoop() {
 }
 
 int ConsoleGameManager::getGameChoice() {
-    display->notifyInstructionsUpdate("Choisissez un jeu (1/2/3/4): ");
-    int choiceGame = checkInputs->getIntegerInput();
+    display->showMessage("Choisissez un jeu (1/2/3/4): ");
+    int choiceGame = checkInput->getIntegerInput();
 
     while (choiceGame < 1 || choiceGame > 3) {
-        display->notifyWarningUpdate("Choix invalide. Entrez 1, 2, 3 ou 4.");
-        choiceGame = checkInputs->getIntegerInput();
+        display->showMessage("Choix invalide. Entrez 1, 2, 3 ou 4.");
+        choiceGame = checkInput->getIntegerInput();
     }
 
     return choiceGame;
 }
 
 int ConsoleGameManager::getModeChoice() {
-    display->notifyInstructionsUpdate("Choisissez le mode de jeu:");
-    display->notifyModeChoiceMenuUpdate();
-    int modeChoice = checkInputs->getIntegerInput();
+    display->showMessage("Choisissez le mode de jeu:");
+    display->showMessage("1. Joueur vs ordinateur");
+    display->showMessage("2. Deux joueurs");
+    display->showMessage("3. Ordinateur vs ordinateur ");
+    int modeChoice = checkInput->getIntegerInput();
 
     while (modeChoice < 1 || modeChoice > 3) {
-        display->notifyWarningUpdate("Choix invalide. Entrez 1/2/3.");
-        modeChoice = checkInputs->getIntegerInput();
+        display->showMessage("Choix invalide. Entrez 1/2/3.");
+        modeChoice = checkInput->getIntegerInput();
     }
 
     return modeChoice;
 }
 
 char ConsoleGameManager::getReplayChoice() {
-    display->notifyWarningUpdate("Voulez-vous rejouer ? (o/n): ");
-    char replayChoice = checkInputs->getCharInput();
+    display->showMessage("Voulez-vous rejouer ? (o/n): ");
+    char replayChoice = checkInput->getCharInput();
     replayChoice = tolower(replayChoice);
 
     while (replayChoice != 'o' && replayChoice != 'n') {
-        display->notifyWarningUpdate("Choix invalide. Entrez 'o' pour oui ou 'n' pour non.");
-        replayChoice = checkInputs->getCharInput();
+        display->showMessage("Choix invalide. Entrez 'o' pour oui ou 'n' pour non.");
+        replayChoice = checkInput->getCharInput();
         replayChoice = tolower(replayChoice);
     }
 
@@ -84,17 +86,14 @@ char ConsoleGameManager::getReplayChoice() {
 }
 
 void ConsoleGameManager::configurePlayers(int modeChoice, std::shared_ptr<Player>& player1, std::shared_ptr<Player>& player2) {;
-    player1.reset();
-    player2.reset();
-
     switch (modeChoice) {
     case 1:  // Joueur vs Ordinateur
-        player1.reset(new HumanPlayer(*display));
+        player1.reset(new HumanPlayer(*display, *checkInput));
         player2.reset(new AIPlayer());
         break;
     case 2:  // Deux Joueurs
-        player1.reset(new HumanPlayer(*display));
-        player2.reset(new HumanPlayer(*display));
+        player1.reset(new HumanPlayer(*display, *checkInput));
+        player2.reset(new HumanPlayer(*display, *checkInput));
         break;
     case 3:  // Ordinateur vs Ordinateur
         player1.reset(new AIPlayer());

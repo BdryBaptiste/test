@@ -3,43 +3,42 @@
 
 #include <QtWidgets>
 #include "ui_MainWindow.h"
-#include "Display/Display.h"
-#include "Game.h"
-#include "Observer/GUIObserver.h"
+#include "Display/GUIDisplay.h"
+#include "GameManager.h"
+#include "Utils/GUICheckInput.h"
 #include "../Games/TicTacToe/TicTacToe.h"
 #include "../Games/ConnectFour/ConnectFour.h"
 #include "../Games/Othello/Othello.h"
 #include <iostream>
 
-class UIGameManager : public QMainWindow
+class UIGameManager : public QMainWindow, public GameManager
 {
     Q_OBJECT
 public:
     explicit UIGameManager(QWidget *parent = nullptr);
     ~UIGameManager();
+    void startGameLoop() override;
+    std::shared_ptr<GUIDisplay> display;
+    std::shared_ptr<GUICheckInputs> checkInput;
 
 private:
     Ui::MainWindow *ui;
-    std::shared_ptr<Display> display;
-    std::shared_ptr<Player> player1;
-    std::shared_ptr<Player> player2;
-    std::shared_ptr<Game> currentGame;
 
 private slots:
-    void onTicTacToeButtonClicked();
-    void onOthelloButtonClicked();
-    void onConnectFourButtonClicked();
-    void onDraugthsButtonClicked();
+    void on_TicTacToeButton_clicked();
+    void on_OthelloButton_clicked();
+    void on_ConnectFourButton_clicked();
+    void on_DraugthsButton_clicked();
 
-    void onPlayerVsComputerButtonClicked();
-    void onTwoPlayersButtonClicked();
-    void onComputerVsComputerButtonClicked();
+    void on_PlayerVsComputerButton_clicked();
+    void on_TwoPlayersButton_clicked();
+    void on_ComputerVsComputerButton_clicked();
 
-    void onStartButtonClicked();
+    void on_StartButton_clicked();
 
+    void hideGameModeButtons();
     void hideGameButtons();
-    void showGameModeButtons();
-
+    void showGameButtons();
 };
 
 #endif // UIGAMEMANAGER_H

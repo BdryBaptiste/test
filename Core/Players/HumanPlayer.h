@@ -10,9 +10,10 @@
 class HumanPlayer : public Player {
 private:
     Display& display;
+    CheckInputs& checkInput;
 
 public:
-    HumanPlayer(Display& display);
+    HumanPlayer(Display& display, CheckInputs& checkInput);
     std::pair<int, int> getDoubleInput(const Board& board) override;
     int getSingleInput(const Board& board, int max) override;
 };

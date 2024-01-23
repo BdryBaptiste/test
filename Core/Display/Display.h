@@ -3,23 +3,16 @@
 
 #include "../../Common/Board.h"
 #include "../../Common/Cell.h"
-#include "../Observer/InterfaceObserver.h"
 
 #include <string>
 
 class Display {
-    public:
-        std::vector<InterfaceObserver*> observers;
-        void addObserver(InterfaceObserver* observer);
-        void notifyBoardUpdate(Board& board);
-        void notifyWarningUpdate(const std::string &warning);
-        void notifyInstructionsUpdate(const std::string &instuctions);
-        void notifyMessageUpdate(const std::string &message);
-        void notifyGameChoiceMenuUpdate();
-        void notifyModeChoiceMenuUpdate();
-        void notifyPositionChoiceUpdate(const Board& board, const std::vector<std::pair<int, int>>& validMoves);
-        void notifyStart();
-        Display();
+public:
+    virtual void displayBoard(const Board& board) = 0;
+    virtual void displayPositionChoice(const Board& board, const std::vector<std::pair<int, int>>& validMoves) = 0;
+    virtual void showMessage(const std::string& message) = 0;
+    virtual void displayInstructions() = 0;
+    virtual ~Display() = default;
 };
 
 #endif // DISPLAY_H

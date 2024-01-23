@@ -31,15 +31,15 @@ add_executable(test
   Core/UIGameManager.cpp
   Core/Game.cpp
   Core/utils/CheckInputs.cpp
+  Core/utils/ConsoleCheckInput.cpp
+  Core/utils/GUICheckInput.cpp
   Core/Display/DisplayConsole.cpp
+  Core/Display/GUIDisplay.cpp
   Core/Display/Display.cpp
   Games/TicTacToe/TicTacToe.cpp
   Games/ConnectFour/ConnectFour.cpp
   Common/Board.cpp
   Games/Othello/Othello.cpp
-  Core/Observer/InterfaceObserver.cpp
-  Core/Observer/ConsoleObserver.cpp
-  Core/Observer/GUIObserver.cpp
 )
 target_link_libraries(test Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets)
 

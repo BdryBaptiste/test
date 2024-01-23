@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <ctime>
+#include <QDebug>
 
 const int BOARD_SIZE = 3;
 const int FIRST_CELL = 0;
@@ -25,9 +26,13 @@ void TicTacToe::playTurn() {
     std::pair<int, int> move;
     Symbol playerSymbol = currentPlayer;
 
+    qDebug() << "Debug current player " << symbolToString(currentPlayer);
+
     do {
         Player* currentPlayerPointer = (currentPlayer == Symbol::PLAYER_X) ? this->player1.get() : this->player2.get();
+        qDebug() << "Debug before checkinput";
         move = currentPlayerPointer->getDoubleInput(gameBoard);
+        qDebug() << "Debug after checkinput";
         row = move.first;
         col = move.second;
     } while (!gameBoard.setCell(row, col, playerSymbol));
@@ -57,7 +62,7 @@ Symbol TicTacToe::checkWinner() {
 }
 
 void TicTacToe::displayInstructions() {
-    display.notifyInstructionsUpdate("Chaque joueur choisit une cellule vide où placer son pion. Le but est d'aligner 3 pions horizontalement, verticalement ou en diagonale.");
+    display.showMessage("Chaque joueur choisit une cellule vide où placer son pion. Le but est d'aligner 3 pions horizontalement, verticalement ou en diagonale.");
 }
 
 std::string TicTacToe::getVictoryMessage(Symbol winner) const {

@@ -14,31 +14,32 @@ GameOutcome Game::determineOutcome(){
 
 
 void Game::endGame(GameOutcome outcome) {
-    display.notifyBoardUpdate(gameBoard);
+    display.displayBoard(gameBoard);
     Symbol winner = checkWinner();
 
     if (winner != Symbol::EMPTY) {
         std::string winnerMessage = getVictoryMessage(winner);
-        display.notifyMessageUpdate(winnerMessage);
+        display.showMessage(winnerMessage);
     } else if (gameBoard.isBoardFull()) {
-        display.notifyMessageUpdate("Match nul !");
+        display.showMessage("Match nul !");
     }
 }
 
 
 void Game::playGame() {
+
     Symbol winner;
 
     displayInstructions();
 
     while (true) {
-        display.notifyBoardUpdate(gameBoard);
+        display.displayBoard(gameBoard);
         playTurn();
         winner = checkWinner();
         if (winner != Symbol::EMPTY || gameBoard.isBoardFull()) {
             break;
         }
-        display.notifyMessageUpdate("Changement de joueur");
+        display.showMessage("Changement de joueur");
         switchPlayer();
     }
     endGame(determineOutcome());

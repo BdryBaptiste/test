@@ -75,20 +75,20 @@ void Othello::playTurn() {
     int countBlack, countWhite;
     //CheckInputs* checkInputs = CheckInputs::getInstance(display);
     countPieces(countBlack, countWhite);
-    display.notifyMessageUpdate("Nombre de B : " + std::to_string(countBlack) + ", Nombre de W : " + std::to_string(countWhite));
-      display.notifyMessageUpdate("Nombre de mouvements valides: " + std::to_string(validMoves.size()));
+    display.showMessage("Nombre de B : " + std::to_string(countBlack) + ", Nombre de W : " + std::to_string(countWhite));
+      display.showMessage("Nombre de mouvements valides: " + std::to_string(validMoves.size()));
     calculateValidMoves();
     if (validMoves.empty()) {
-        display.notifyWarningUpdate("Aucun mouvement valide pour le joueur " + symbolToString(currentPlayer) + ". Passage au joueur suivant.");
+        display.showMessage("Aucun mouvement valide pour le joueur " + symbolToString(currentPlayer) + ". Passage au joueur suivant.");
         return;
     }
 
     auto numberedMoves = getNumberedValidMoves();
-    display.notifyPositionChoiceUpdate(gameBoard, validMoves);
+    display.displayPositionChoice(gameBoard, validMoves);
 
     bool validMove = false;
     while (!validMove) {
-        display.notifyMessageUpdate("Joueur " + symbolToString(currentPlayer) + ", choisissez un mouvement: ");
+        display.showMessage("Joueur " + symbolToString(currentPlayer) + ", choisissez un mouvement: ");
         Player* currentPlayerPointer = (currentPlayer == Symbol::PLAYER_BLACK) ? this->player1.get() : this->player2.get();
         int moveNumber = currentPlayerPointer->getSingleInput(gameBoard, validMoves.size());
 
@@ -99,10 +99,10 @@ void Othello::playTurn() {
                 flipPieces(chosenMove.first, chosenMove.second);
                 validMove = true;
             } else {
-                display.notifyWarningUpdate("Mouvement invalide. Veuillez réessayer.");
+                display.showMessage("Mouvement invalide. Veuillez réessayer.");
             }
         } else {
-            display.notifyWarningUpdate("Mouvement invalide. Veuillez réessayer.");
+            display.showMessage("Mouvement invalide. Veuillez réessayer.");
         }
     }
 }
@@ -154,7 +154,7 @@ void Othello::countPieces(int& countBlack, int& countWhite) const {
 }
 
 void Othello::displayInstructions() {
-    display.notifyInstructionsUpdate("Chacun son tour, les joueurs doivent poser un pion de sorte qu’il entoure les pions de la couleur adverse afin de pouvoir retourner les pions et les faire basculer dans sa couleur.\nLe terme « entourer » signifie apposer un pion de chaque côté d’une couleur adverse.\nLes pions deviennent alors de la couleur entourée.\nQuand le plateau est plein, le joueur avec le plus de pions remporte la partie.");
+    display.showMessage("Chacun son tour, les joueurs doivent poser un pion de sorte qu’il entoure les pions de la couleur adverse afin de pouvoir retourner les pions et les faire basculer dans sa couleur.\nLe terme « entourer » signifie apposer un pion de chaque côté d’une couleur adverse.\nLes pions deviennent alors de la couleur entourée.\nQuand le plateau est plein, le joueur avec le plus de pions remporte la partie.");
 }
 
 void Othello::flipPieces(int row, int col) {
