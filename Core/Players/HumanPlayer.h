@@ -2,7 +2,6 @@
 #define HUMANPLAYER_H
 
 #include "../Interactors/IPlayerInteractor.h"
-#include "../Utils/InputManager.h"
 #include "../Utils/CheckInputs.h"
 #include "../Display/Display.h"
 #include "../../Common/Board.h"

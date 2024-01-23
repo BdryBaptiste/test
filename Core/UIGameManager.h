@@ -3,11 +3,9 @@
 
 #include <QtWidgets>
 #include "ui_MainWindow.h"
-#include "Display/Display.h"
 #include "Display/GUIDisplay.h"
 #include "GameManager.h"
-#include "Utils/CheckInputs.h"
-#include "Game.h"
+#include "Utils/GUICheckInput.h"
 #include "../Games/TicTacToe/TicTacToe.h"
 #include "../Games/ConnectFour/ConnectFour.h"
 #include "../Games/Othello/Othello.h"

@@ -9,10 +9,7 @@
 #include "../Games/TicTacToe/TicTacToe.h"
 #include "../Games/ConnectFour/ConnectFour.h"
 #include "../Games/Othello/Othello.h"
-#include "Utils/CheckInputFactory.h"
 #include "Utils/CheckInputs.h"
-#include "Utils/InputManager.h"
-#include "Utils/InputType.h"
 //#include "../Games/Draughts/Draughts.h"
 
 class GameManager {
