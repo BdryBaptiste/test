@@ -13,7 +13,7 @@
 #include "../Games/Othello/Othello.h"
 #include <iostream>
 
-class UIGameManager : public QMainWindow
+class UIGameManager : public QMainWindow, public GameManager
 {
     Q_OBJECT
 public:
@@ -21,12 +21,7 @@ public:
     ~UIGameManager();
 
 private:
-    CheckInputs* checkInput;
     Ui::MainWindow *ui;
-    std::shared_ptr<Display> display;
-    std::shared_ptr<Player> player1;
-    std::shared_ptr<Player> player2;
-    std::shared_ptr<Game> currentGame;
 
 private slots:
     void onTicTacToeButtonClicked();
