@@ -21,7 +21,7 @@ public:
     ~UIGameManager();
 
 private:
-    CheckInputs* checkInputs;
+    CheckInputs* checkInput;
     Ui::MainWindow *ui;
     std::shared_ptr<Display> display;
     std::shared_ptr<Player> player1;

@@ -4,7 +4,7 @@
 UIGameManager::UIGameManager(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     display.reset(new GUIDisplay());
-    checkInputs = CheckInputs::getInstance(*display);
+    checkInput.reset(new GUICheckInputs(*display));
 
     ui->setupUi(this);
 

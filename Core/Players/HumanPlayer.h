@@ -2,6 +2,7 @@
 #define HUMANPLAYER_H
 
 #include "../Interactors/IPlayerInteractor.h"
+#include "../Utils/InputManager.h"
 #include "../Utils/CheckInputs.h"
 #include "../Display/Display.h"
 #include "../../Common/Board.h"
@@ -10,9 +11,10 @@
 class HumanPlayer : public Player {
 private:
     Display& display;
+    CheckInputs& checkInput;
 
 public:
-    HumanPlayer(Display& display);
+    HumanPlayer(Display& display, CheckInputs& checkInput);
     std::pair<int, int> getDoubleInput(const Board& board) override;
     int getSingleInput(const Board& board, int max) override;
 };

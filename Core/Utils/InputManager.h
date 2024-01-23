@@ -8,7 +8,7 @@ class InputManager
 public:
     void setCheckInput(std::unique_ptr<CheckInputs> input);
 
-    CheckInputs* getCheckInput();
+    CheckInputs getCheckInput();
 
 private:
     std::unique_ptr<CheckInputs> checkInput;

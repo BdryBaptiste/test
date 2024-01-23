@@ -2,7 +2,7 @@
 #define GAMEMANAGER_H
 
 #include <memory>
-#include "Display/DisplayConsole.h"
+#include "Display/Display.h"
 #include "Game.h"
 #include "Players/AIPlayer.h"
 #include "Players/HumanPlayer.h"
@@ -21,7 +21,8 @@ public:
     virtual void startGameLoop() = 0;
 
 protected:
-    std::shared_ptr<DisplayConsole> display;
+    std::shared_ptr<Display> display;
+    std::shared_ptr<CheckInputs> checkInput;
     std::shared_ptr<Player> player1;
     std::shared_ptr<Player> player2;
     std::shared_ptr<Game> currentGame;

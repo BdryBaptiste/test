@@ -4,10 +4,8 @@
 #include "CheckInputs.h"
 
 class GUICheckInputs : public CheckInputs {
-private:
-    GUICheckInputs(Display& display);
-
 public:
+    GUICheckInputs(Display& display);
     int getIntegerInput() override;
     char getCharInput() override;
     std::string getStringInput() override;

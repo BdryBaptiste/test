@@ -1,13 +1,10 @@
 #include "ConsoleGameManager.h"
 
+
 ConsoleGameManager::ConsoleGameManager() {
     display.reset(new DisplayConsole());
 
-    InputType inputType = InputType::GUI;
-    auto checkInput = CheckInputFactory::createCheckInput(inputType);
-
-    InputManager inputManager;
-    inputManager.setCheckInput(std::move(checkInput));
+    checkInput.reset(new ConsoleCheckInputs(*display));
 }
 
 void ConsoleGameManager::startGameLoop() {
@@ -50,11 +47,11 @@ void ConsoleGameManager::startGameLoop() {
 
 int ConsoleGameManager::getGameChoice() {
     display->showMessage("Choisissez un jeu (1/2/3/4): ");
-    int choiceGame = checkInputs->getIntegerInput();
+    int choiceGame = checkInput->getIntegerInput();
 
     while (choiceGame < 1 || choiceGame > 3) {
         display->showMessage("Choix invalide. Entrez 1, 2, 3 ou 4.");
-        choiceGame = checkInputs->getIntegerInput();
+        choiceGame = checkInput->getIntegerInput();
     }
 
     return choiceGame;
@@ -65,11 +62,11 @@ int ConsoleGameManager::getModeChoice() {
     display->showMessage("1. Joueur vs ordinateur");
     display->showMessage("2. Deux joueurs");
     display->showMessage("3. Ordinateur vs ordinateur ");
-    int modeChoice = checkInputs->getIntegerInput();
+    int modeChoice = checkInput->getIntegerInput();
 
     while (modeChoice < 1 || modeChoice > 3) {
         display->showMessage("Choix invalide. Entrez 1/2/3.");
-        modeChoice = checkInputs->getIntegerInput();
+        modeChoice = checkInput->getIntegerInput();
     }
 
     return modeChoice;
@@ -77,12 +74,12 @@ int ConsoleGameManager::getModeChoice() {
 
 char ConsoleGameManager::getReplayChoice() {
     display->showMessage("Voulez-vous rejouer ? (o/n): ");
-    char replayChoice = checkInputs->getCharInput();
+    char replayChoice = checkInput->getCharInput();
     replayChoice = tolower(replayChoice);
 
     while (replayChoice != 'o' && replayChoice != 'n') {
         display->showMessage("Choix invalide. Entrez 'o' pour oui ou 'n' pour non.");
-        replayChoice = checkInputs->getCharInput();
+        replayChoice = checkInput->getCharInput();
         replayChoice = tolower(replayChoice);
     }
 
@@ -95,12 +92,12 @@ void ConsoleGameManager::configurePlayers(int modeChoice, std::shared_ptr<Player
 
     switch (modeChoice) {
     case 1:  // Joueur vs Ordinateur
-        player1.reset(new HumanPlayer(*display));
+        player1.reset(new HumanPlayer(*display, *checkInput));
         player2.reset(new AIPlayer());
         break;
     case 2:  // Deux Joueurs
-        player1.reset(new HumanPlayer(*display));
-        player2.reset(new HumanPlayer(*display));
+        player1.reset(new HumanPlayer(*display, *checkInput));
+        player2.reset(new HumanPlayer(*display, *checkInput));
         break;
     case 3:  // Ordinateur vs Ordinateur
         player1.reset(new AIPlayer());
